@@ -1,11 +1,20 @@
 /* Note: Where the javascript and html need to interact, it should be done from the javascrip
 
 The to-do list should be capable of the following task:
-1.view all projects
-2.view all todos in each project (probably just the title and duedate.. perhaps changing color for different priorities)
+1.view all projects /
+2.view all todos in each project (probably just the title and duedate.. perhaps changing color for different priorities) /
 3.expand a single todo to see/edit its details <--
 4.delete a todo <--
+
+The to-do item should be capable of the following task:
+1.title /
+2.description <--
+3.dueDate <--
+4.priority <-- (I know how to tackle this one)
+
 */
+
+
 
 // Imports:
 // import _ from "date-fns";
