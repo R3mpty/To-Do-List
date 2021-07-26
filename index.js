@@ -12,7 +12,7 @@ The to-do list should be capable of the following task:
 // import { id } from "date-fns/locale";
 
 // Global variables
-let list = []; 
+let list = [];
 
 // Documents the details of a todo item
 class todo {
@@ -31,6 +31,7 @@ class todo {
   }
 }
 
+// I don't really like using factory functions nor modules and I much prefer class, that said, I am not sure how I am supposed to devide my code up into classes in this case
 
 const ToDoList = (() => {
 
@@ -40,15 +41,20 @@ const ToDoList = (() => {
   // Tracks the ID of each todos
   let id_Counter = 0;
 
-
-
-
-  
-
-  // how would the trash button trace back to the todo object <<---------- Current stuck on this
-  // const trash_button = document.querySelectorAll('.trash');
+  // adding the trash button <<---------- Current stuck on this
+  const trash_button_list = Array.from(document.querySelectorAll('.trash')); // Why does the list remain empty?
+  console.log(trash_button_list);
   // trash_button.addEventListener('click', function(){
   // })
+
+  // Is the reason for the code line 50-57 not working due to the fact that the todo container is overriding the trash button or is it that the trash button list is somehow empty
+  for (let i = 0; i < trash_button_list.length; i++){
+    trash_button_list[i].addEventListener("click",remove(i));
+  }
+
+  function remove(i){
+    list.splice(i,1);
+  }
 
   const expand_button = document.querySelector(".view-all");
   let expanded = false;
@@ -118,14 +124,10 @@ const ToDoList = (() => {
     listElement.innerText = list[i].getTask();
     listElement.classList.add("listElement");
 
+    
     const trash = document.createElement("img");
     trash.src = "images/trash.png";
     trash.classList.add("trash");
-
-    // // invisible id element (IP)
-    // const id = document.createElement('p');
-    // id.innerText = list[i].getID();
-    // trash.append(id);
 
     listElement.appendChild(trash);
     return listElement;
